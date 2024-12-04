@@ -1,0 +1,569 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="LoadInputFiles" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sa="clr-namespace:Synchro_Library.Activities;assembly=Synchro.Library" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_Browser" Type="InArgument(ui:UiElement)" />
+    <x:Property Name="out_InputFile" Type="OutArgument(x:String)" />
+    <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1426,7013</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>DATProcess_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>Synchro_Library.Activities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.Slack.Enums</x:String>
+      <x:String>UiPath.BAF.Enums</x:String>
+      <x:String>UiPath.Swagger.Models</x:String>
+      <x:String>UiPath.CodeGen.Models.Connection</x:String>
+      <x:String>UiPath.Slack.Models</x:String>
+      <x:String>UiPath.BAF.Models.Connection</x:String>
+      <x:String>UiPath.BAF.Models.Connection.APIConnection</x:String>
+      <x:String>UiPath.BAF.Telemetry</x:String>
+      <x:String>UiPath.BAF.Activities.ContextModel</x:String>
+      <x:String>UiPath.BAF.Models</x:String>
+      <x:String>UiPath.BAF.ServiceInterfaces</x:String>
+      <x:String>UiPath.BAF.Models.Entity</x:String>
+      <x:String>UiPath.BAF.Models.CrudOperation</x:String>
+      <x:String>UiPath.BAF.Models.Response</x:String>
+      <x:String>UiPath.Slack.Activities</x:String>
+      <x:String>UiPath.CodeGen.Activities</x:String>
+      <x:String>UiPath.BAF.Activities</x:String>
+      <x:String>UiPath.Slack.Activities.Messages</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Core.Activities.Orchestrator</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>Synchro.Library</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Slack</AssemblyReference>
+      <AssemblyReference>UiPath.Slack.Activities</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="DATProcess" sap:VirtualizedContainerService.HintSize="1436,6948" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="s:String[]" Name="InputFiles" />
+      <Variable x:TypeArguments="x:String" Name="InputFile" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_Loads" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1374,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;DATProcess execution started&quot;]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1374,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[InputFiles]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(in_Config("PathInputFolder").ToString,"*.xlsx").ToArray]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[InputFile]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <If Condition="[InputFiles.Count = 0]" sap:VirtualizedContainerService.HintSize="1374,6364" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="1340,6024" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1278,175" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;No input files available. Started extracting loads from TMS.&quot;]" />
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SendSlackMessage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="1278,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SendSlackMessage.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_Message">No input files available. Started extracting loads from TMS.</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="1278,5615" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InUiElement="[in_Browser]" ScopeGuid="651d3268-b856-440a-abdd-6388d240188b" Version="V2">
+            <uix:NApplicationCard.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1244,5454" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataTable" Name="dt_EmptyMiles" />
+                    <Variable x:TypeArguments="x:Boolean" Name="IsFirstLoad" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="1182,115" sap2010:WorkflowViewState.IdRef="NGoToUrl_7" Url="[in_Config(&quot;TMS_URL&quot;).ToString]" Version="V3" />
+                  <sa:TMSLogin sap:VirtualizedContainerService.HintSize="1182,175" sap2010:WorkflowViewState.IdRef="TMSLogin_5" in_Browser="[in_Browser]" in_Config="[in_Config]" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1182,177" sap2010:WorkflowViewState.IdRef="LogMessage_37" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Navigating to cognine-DAT-rates&quot;]" />
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Loads'" sap:VirtualizedContainerService.HintSize="1182,190" sap2010:WorkflowViewState.IdRef="NClick_11" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="651d3268-b856-440a-abdd-6388d240188b" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://synchrogistics.lightning.force.com/lightning/page/home" CvTextArea="638, 191, 35, 13" CvTextArgument="Loads" CvType="Text" DesignTimeRectangle="638, 189, 34, 17" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/oneAppNavContainer:appnav/auraIf/oneAppnav:oneAppNav' tag='ONE-APPNAV' /&gt;&lt;webctrl aaname='Loads' class='slds-truncate' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/oneAppNavContainer:appnav/auraIf/oneAppnav:oneAppNav' tag='ONE-APPNAV' /&gt;&lt;webctrl aaname='Loads' class='slds-truncate' tag='SPAN' type='' check:innerText='Loads' /&gt;" Guid="b9b65e51-8fad-4348-b4af-9f0784b721ed" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACYAAAAVCAYAAAAq05ytAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEISURBVEhL7ZPBDYMwDEU7BvswBIzAAizAACzBmTM7MAMzcOWY6kX8yKQgQFUlpOZLFsF2Py9O+nIPVQK7qwR2VwlM6vvex5k2YOM4urZt17ff6H/AMMuyzEee526aprXi/Jqc6vhItlbXteu6LoDN8+zKstz1vARGHgOMEAZVVYX3YRiCqe0l6FNNkIAty+JB7SasTsGODOjbMwWGfp4AxH7kNDFqWse6BNY0zWbMyH4ACB0JoYnZHsnmtGl+E/d9PbH4uM4mtjelvW9cumMYHd0xu0Z4qJdaURQBmqfuWKwY+ANMx6FQM0/lLCSyNXauiSHrSV7/SnuMRDyQDdiTlMDuKoHdk3NvVoSr5uB1LQ8AAAAASUVORK5CYII=" InformativeScreenshot="e4101a0a2d5305db1668edbbe5a8f89d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Home | Salesforce' /&gt;" SearchSteps="FuzzySelector, Image, CV" Version="V3" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target CvTextArea="638, 191, 35, 13" CvTextArgument="Loads" CvType="Text" DesignTimeRectangle="626, 179, 58, 37" ElementType="Text" FullSelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/oneAppNavContainer:appnav/auraIf/oneAppnav:oneAppNav' tag='ONE-APPNAV' /&gt;&lt;webctrl aaname='Loads' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/oneAppNavContainer:appnav/auraIf/oneAppnav:oneAppNav' tag='ONE-APPNAV' /&gt;&lt;webctrl aaname='Loads' tag='A' type='' class='slds-context-bar__label-action dndItem' check:innerText='Loads' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAD4AAAApCAYAAABtEppnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFPSURBVGhD7ZTBqYNAEIZThv3YQkBLsAEbsACvvrtnz/ZgAQHBAjx59biPX/LLYDYEoxsSZj5Y1N3JMt/Mbi5OKSauDRPXholrw8S1YeLaMHFtmLg2TPxbaZpmGWdzSLzrOleW5f0rDCZ+In3fhxNHslEULSOOYzcMw33FLe+Y4zr2IXItz3NX1/UqPk2TS9PUu+ceqqoKI455JIhEARLMsmz9btt2TVrGYiCOaywCxOd5Xgohi/Qu4zieL/4sQcT5koYs4vGE4HY/zLHjWOP7UYKIF0XxcAylACR5ZDHYcRlD5ByLit9s4/by8Y5vj/Orjvu6fMaxD3LHkeizOy7fAfZgLNaSJFmLgifv+BZfQfZwWJzHlYPJ4Mk5WQQg19A5dhzIPTHPf3V5zDF8Bd/DIfFfxsS1YeLaMHFtmLg2TFwbJq6Ny/Xv5jQOpeI39w/R5Te4tkgF7wAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image, CV" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Recently Viewed'" sap:VirtualizedContainerService.HintSize="1182,190" sap2010:WorkflowViewState.IdRef="NClick_12" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="651d3268-b856-440a-abdd-6388d240188b" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://synchrogistics.lightning.force.com/lightning/o/rtms__Load__c/list?filterName=Recent" CvTextArea="76, 243, 140, 21" CvTextArgument="Recently Viewed" CvType="Text" DesignTimeRectangle="77, 241, 143, 23" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/navexSplitViewWrapper:splitViewWrapper/lafPageHost:pageHost/oneConsoleObjectHome/auraIf/forceListViewManager:listViewManager/auraIf/auraIf/auraIf/forceListViewManagerHeader:header/forceListViewPicker:listViewPicker/uiOutputText:triggerLinkText/auraHtml:span' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/navexSplitViewWrapper:splitViewWrapper/lafPageHost:pageHost/oneConsoleObjectHome/auraIf/forceListViewManager:listViewManager/auraIf/auraIf/auraIf/forceListViewManagerHeader:header/forceListViewPicker:listViewPicker/uiOutputText:triggerLinkText/auraHtml:span' tag='SPAN' type='' class='triggerLinkText selectedListView slds-page-header__title slds-truncate slds-p-right--xx-small uiOutputText' aaname='Recently Viewed' check:innerText='Recently Viewed' /&gt;" Guid="bc0d5dfa-6d88-437f-b7d2-01dea4034c52" InformativeScreenshot="7b83b49de99b00cead322fbd67db85d2.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Recently Viewed | Loads | Salesforce' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target CvTextArea="76, 228, 35, 13" CvTextArgument="Loads" CvType="Text" DesignTimeRectangle="77, 226, 38, 17" ElementType="Text" FullSelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/navexSplitViewWrapper:splitViewWrapper/lafPageHost:pageHost/oneConsoleObjectHome/auraIf/forceListViewManager:listViewManager/auraIf/auraIf/auraIf/forceListViewManagerHeader:header/lstBreadcrumbs:breadCrumbs' tag='LST-BREADCRUMBS' /&gt;&lt;webctrl tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/navexSplitViewWrapper:splitViewWrapper/lafPageHost:pageHost/oneConsoleObjectHome/auraIf/forceListViewManager:listViewManager/auraIf/auraIf/auraIf/forceListViewManagerHeader:header/lstBreadcrumbs:breadCrumbs' tag='LST-BREADCRUMBS' /&gt;&lt;webctrl tag='SPAN' type='' class='slds-var-p-right_x-small' aaname='Loads' check:innerText='Loads' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACoAAAAVCAYAAAAw73wjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD0SURBVEhL7ZPRDYQgDIZvDKYjcRvDHjgIjmHCEgzQs3JIC4KY4+Eu4eF/sIX2s/15OefgHzRAe2uA9tYAvZYBJRSYy1xdBNSCniTojR/oqwEahA0EiKDZsLyZSW7SYAs5tXJQu8h4L6mZqgEU4wLkYs8YNo/fe/OzCT97gBAAD/0BXVX2UzXdg14V3DTIQhOE86A4vbQemSjWeGCDNtBsLZUV7oqgKUgSw9rHnXvgryearrc60dIUG2zQ4FFsWPYo9yv36OHJkkepGmyQgMb18ZV42BCn0Dwn94cVJprXZK/+XLu/lw+Ii4D+tgZobw3QvnLwBnzifNwdiD4IAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, CV" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Cognine Dat Rates'" sap:VirtualizedContainerService.HintSize="1182,190" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="651d3268-b856-440a-abdd-6388d240188b" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://synchrogistics.lightning.force.com/lightning/o/rtms__Load__c/list?filterName=Recent" CvTextArea="117, 400, 108, 16" CvTextArgument="Cognine Dat Rates" CvType="Text" DesignTimeRectangle="118, 397, 106, 20" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Cognine Dat Rates' sfl-path='uiPanelManager2/uiPanel/forceVirtualAutocompleteMenu/forceVirtualAutocompleteMenuList/auraIf/uiVirtualList:list/forceVirtualAutocompleteMenuOption:listViewTemplate/auraHtml:option' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Cognine Dat Rates' sfl-path='uiPanelManager2/uiPanel/forceVirtualAutocompleteMenu/forceVirtualAutocompleteMenuList/auraIf/uiVirtualList:list/forceVirtualAutocompleteMenuOption:listViewTemplate/auraHtml:option' tag='SPAN' type='' class=' virtualAutocompleteOptionText' check:innerText='Cognine Dat Rates' /&gt;" Guid="502819f9-76dd-43e6-bcb5-ae3b336153f2" InformativeScreenshot="104b392a64b9493b1248bdb067ce4e57.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Recently Viewed | Loads | Salesforce' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target CvTextArea="117, 400, 108, 16" CvTextArgument="Cognine Dat Rates" CvType="Text" DesignTimeRectangle="78, 389, 581, 36" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='SelectedCognine Dat Rates' aria-role='option' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='SelectedCognine Dat Rates' aria-role='option' tag='A' type='' class='' check:innerText='Cognine Dat Rates' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAkkAAAAoCAYAAADqt27iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN5SURBVHhe7dvdbeJMFIDhLYPqkNINog9SQgogV6khEj1EKcDr8e/M+BjIKhdreI706AsYO2O+C7+aaP807by9vaX/GGOMMcY8/Xx9fXVEkjHGGGNMNotI+v7+BgB4eiIJACAgkgAAAiIJACAgkgAAAiIJACAgkgAAAiIJACAgkgAAAiIJACAwRdLHx4dIAgAY2EkCAAiIJACAgEj6ic9Ts9/tm9NncAwAeCgbjqRzc9ztmt3k2JzDz/3n3o/ZPQxeTs0l+mwknX/l85fXfXX9eyPv0pxeds3xPToGAI9vm5E0hEXxAP88NcfXS/m5LUj3cjgX7/Vhc2fM3BFJ+/x7ufH5mUgC4LltMJLSDtKtgKh2maoI6f9sNhxrg+GchcT5sGt/PneB0J+f7VB15w2vx5+HYEuKGGmla60dmwSRlHShlL2fX2uMnHqXKAqaRSR13818T+U1xver72+Kqvz98v/BXfcKABuyvUi6uRPS74DkD+o+fMbXVWQNwTQe7x/28/Hu9Rgri0iqj83nlZFzZVdmJZKK35XWXF1rup8b30cdSYt1HeZzi3tdrLl6na2vvCYAPIZtRtK1B3IUDemBnu++VOfnIVEGVSu/Xh4uRcQkeURUIdaqY2Wyej/pGvn1Z8W17oikaUfo1i5PsZYqiha/Jx0f7vHGGgBgix5vJ6l40I/m4Ihi5WokZYF1PZL6c+dImsNkEsVQuN5W/ntbq7Fz4/tYBFUdXt170RqDSMo/NxiPT+sTSwA8iO1FUrBLU4iiIQuO7mFeRUkeRr8XSVWMrEnrDSIpX0e95kX43BtJreL+6nOLtQSRFKyzFn2/ALBFG4yk4UFch1IbLf2/but3cVbDoIub7Nzu9Xz8dyKp//muWAjiozs3i5dyTX28TK9/GEl5ZNZBU665iqThe51fr7ixHgDYik1GUic9jNOfd0bFg7l/oI/Hykiozm3PW/7rtuzz/xhJY2RMv2dt96u+j9ZivcX97JvjIQ+f+fdEAbOMpDEy09rLNR4P7VryYBvXVtz//Pnx/f564/vldwIAW7XdSPpFZdwAAIikYbfE7gcAUHq+SKr/ZLT2ZzAA4KnZSQIACIgkAICASAIACIgkAICASAIACIgkAICASAIACIgkAICASAIACCwiyRhjjDHGNCLJGGOMMSYakWSMMcYYE0wfSV/NX6adfzjNebZmAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, CV" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'SPAN'" sap:VirtualizedContainerService.HintSize="1182,139" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
+                    <ui:WaitUiElementAppear.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fd610c0f-6a54-4542-b0cf-712aa6093ab4" InformativeScreenshot="74fcd440a7a5c2cf192c79a1c3bbac4e" Selector="&lt;html app='chrome.exe' title='Cognine Dat Rates | Loads | Salesforce' /&gt;&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/navexSplitViewWrapper:splitViewWrapper/lafPageHost:pageHost/oneConsoleObjectHome/auraIf/auraIf/forceListViewManager:listViewManager/auraIf/auraIf/auraIf/forceListViewManagerHeader:header/forceListViewPicker:listViewPicker/uiOutputText:triggerLinkText/auraHtml:span' tag='SPAN' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:WaitUiElementAppear.Target>
+                  </ui:WaitUiElementAppear>
+                  <Assign sap:VirtualizedContainerService.HintSize="1182,114" sap2010:WorkflowViewState.IdRef="Assign_30">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[IsFirstLoad]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="True" DisplayName="While" sap:VirtualizedContainerService.HintSize="1182,3070" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                    <ui:InterruptibleWhile.Body>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="592,2924" sap2010:WorkflowViewState.IdRef="Sequence_58">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="530,175" sap2010:WorkflowViewState.IdRef="LogMessage_38" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Scrolling down 200 scrolls&quot;]" />
+                        <uix:NMouseScroll KeyModifiers="{x:Null}" Direction="Down" DisplayName="Mouse Scroll 'Loads'" sap:VirtualizedContainerService.HintSize="530,197" sap2010:WorkflowViewState.IdRef="NMouseScroll_3" InteractionMode="HardwareEvents" MovementUnits="200" ScopeIdentifier="651d3268-b856-440a-abdd-6388d240188b" Version="V3">
+                          <uix:NMouseScroll.Target>
+                            <uix:TargetAnchorable BrowserURL="https://synchrogistics.lightning.force.com/lightning/o/rtms__Load__c/list?filterName=00B4Q00000AdIkrUAF" DesignTimeRectangle="21, 353, 1340, 384" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/navexSplitViewWrapper:splitViewWrapper/lafPageHost:pageHost/oneConsoleObjectHome/auraIf/forceListViewManager:listViewManager/forceListViewManagerPrimaryDisplayManager:displayManager/forceListViewManagerGrid/uiScroller:scroller/auraHtml:scrollWrapper' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/navexSplitViewWrapper:splitViewWrapper/lafPageHost:pageHost/oneConsoleObjectHome/auraIf/forceListViewManager:listViewManager/forceListViewManagerPrimaryDisplayManager:displayManager/forceListViewManagerGrid/uiScroller:scroller/auraHtml:scrollWrapper' tag='DIV' type='' class='uiScroller scroller-wrapper scroll-bidirectional native' aaname='' /&gt;" Guid="f384e549-8241-4c06-a4ca-1bd197548513" InformativeScreenshot="39adef4cba21fa8a37918b9b96efba13.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Cognine Dat Rates | Loads | Salesforce' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target CvTextArea="120, 329, 77, 13" CvTextArgument="Load Num..." CvType="Text" DesignTimeRectangle="113, 320, 93, 32" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='A' class='toggle slds-th__action slds-text-link--reset ' aaname='SortLoad Number' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGEAAAAkCAYAAACZk1R8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGoSURBVGhD7Zv9zYMgEIc7nNPUVcoexjVMTMw7g13CAe5F6smB2KrBeCY/kyctHvJxD0j/6WMYBgLX8ui6jsC1YCcoABIUAAkKgAQFQIICIEEBkKAASFAAJCgAEhQACQrYIaElUxRUFIbaZDwTjbF92H5ebSLOY1jG29fnvmlk/XtwXwlFSfXbxyAhJ5slWJ419VMMEkbeNZUrCZoTm4pZOIFudVdbJBgyUdJDCVzP75Yw3lP95LgXW1a9eNaSHEN+8kiIBTBTsvuqXMamCSZjIh4ixxCO56iE0n0yy7J85Z1FFgk8wc9KknUTk2BhThDX8yt6lvJTgq879ntMAo95vczjOpOsEuSA5T3+HhBIEG1uOhO4/nJF75OwFk/P6SzO3wl/cuXbGCc5kOCTsWcnuHvReRMm+Vf5thJCXOLXzgSXyPRzLIUnu2CrBItsI05izFEJ38ux5H3kkTDG419AIon+8LWTbqKdEbRrk7vrdTQhFsGcBLkwbFvppN1OAjgLSFAAJCgAEhQACQqABAVAggIgQQGQoABIUAAkKAB/ElHAg3BdfBH9A9TA+svlykyuAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image, CV" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NMouseScroll.Target>
+                        </uix:NMouseScroll>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,143" sap2010:WorkflowViewState.IdRef="LogMessage_39" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Extracting loads&quot;]" />
+                        <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dt_Loads]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Load Number' ReferenceName='Column0'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Expected Ship Date' ReferenceName='Column1'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Equipment Type' ReferenceName='Column2'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Miles' ReferenceName='Column3'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='DAT Origin City' ReferenceName='Column4'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='DAT Origin State' ReferenceName='Column5'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='DAT Origin ZIP' ReferenceName='Column6'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='DAT Destination City' ReferenceName='Column7'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='DAT Destination State' ReferenceName='Column8'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='DAT Destination ZIP' ReferenceName='Column9'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Stops' ReferenceName='Column10'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='tr' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='th' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='fulltext'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='3' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column2' attr='fulltext'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='5' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column3' attr='fulltext'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='6' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column4' attr='fulltext'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='7' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column5' attr='fulltext'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='8' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column6' attr='fulltext'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='9' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column7' attr='fulltext'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='10' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column8' attr='fulltext'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='11' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column9' attr='fulltext'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='12' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column10' attr='fulltext'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='13' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="510,197" sap2010:WorkflowViewState.IdRef="NExtractData_2" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="651d3268-b856-440a-abdd-6388d240188b" Version="V3">
+                          <uix:NExtractData.Target>
+                            <uix:TargetAnchorable DesignTimeRectangle="21, 341, 1390, 1499" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='TBODY' /&gt;" Guid="42e182d7-c73a-4bad-a97a-27f7cc51adfa" InformativeScreenshot="24d886498b75a1e5dc8f939b406fbd68.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Cognine Dat Rates | Loads | Salesforce' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          </uix:NExtractData.Target>
+                        </uix:NExtractData>
+                        <If Condition="[IsNothing(dt_Loads) OR dt_Loads.RowCount=0]" sap:VirtualizedContainerService.HintSize="510,762" sap2010:WorkflowViewState.IdRef="If_2">
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,534" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="354,183" sap2010:WorkflowViewState.IdRef="LogMessage_45" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Loads Count 0&quot;]" />
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SendSlackMessage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="354,153" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="SendSlackMessage.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Message">Loads Count : 0</InArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                              <Throw Exception="[New BusinessRuleException(&quot;Loads Count 0&quot;)]" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap2010:WorkflowViewState.IdRef="Sequence_52" />
+                          </If.Else>
+                        </If>
+                        <If Condition="[dt_Loads.AsEnumerable().Where(function(m) m(3).Equals(string.Empty)).Count&gt;0 AND  IsFirstLoad]" sap:VirtualizedContainerService.HintSize="530,398" sap2010:WorkflowViewState.IdRef="If_4">
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_59">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_28">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="sd:DataTable">[dt_EmptyMiles]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="sd:DataTable">[dt_Loads.AsEnumerable().Where(function(m) m(3).Equals(string.Empty)).CopyToDataTable]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap2010:WorkflowViewState.IdRef="Sequence_60" />
+                          </If.Else>
+                        </If>
+                        <If Condition="[NOT IsNothing(dt_EmptyMiles)]" sap:VirtualizedContainerService.HintSize="530,964" sap2010:WorkflowViewState.IdRef="If_3">
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,690" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,183" sap2010:WorkflowViewState.IdRef="LogMessage_46" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Miles empty for &quot; + dt_EmptyMiles.RowCount.ToString + &quot; loads&quot;]" />
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SendSlackMessage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,153" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="SendSlackMessage.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Message">["Miles empty for " + dt_EmptyMiles.RowCount.ToString + " loads"]</InArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_EmptyMiles]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="434,65" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                                <ui:ForEachRow.Body>
+                                  <ActivityAction x:TypeArguments="sd:DataRow">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                                    </ActivityAction.Argument>
+                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="996,1251" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Search...'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="954,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="DebuggerApi" ScopeIdentifier="651d3268-b856-440a-abdd-6388d240188b" Text="[CurrentRow(0).ToString]" Version="V3">
+                                        <uix:NTypeInto.Target>
+                                          <uix:TargetAnchorable BrowserURL="https://synchrogistics.lightning.force.com/lightning/o/rtms__Load__c/list?filterName=00B4Q00000AdIkrUAF" CvTextArea="510, 147, 48, 13" CvTextArgument="Search..." CvType="Text" DesignTimeRectangle="472, 138, 400, 32" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='button' class='slds-button slds-button_neutral search-button slds-truncate hasSearchTerm hasSearchTerm hasSearchTerm' aaname='Search...' check:innerText='Search...' /&gt;" Guid="9d66df58-bb72-4c45-9cc8-dea8b6f4d7c2" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAZQAAAAkCAYAAACueMxhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAO/SURBVHhe7d1LS+tAGIDh8zP6+wr+AxUEXXhZS1a6EsELohLdCoqiUBAUr6DuFLyAiAtBpYr6nXzTSTrTNqWWpMce3weGYybpuMvLJJbzRwAAyABBAQBkwgvK9fW1TE9Py8DAgPT29jIYDAaDUTe0EdoKbYYrCYqe0ItKpZKUy2U7CwCATxuhrdBmuFFJgqK10QsAAGiFNkPbEUuCoqVhZwIAaJU2Q9sRS4Kiz8UAAPgOtx0EBQDQNoICAMgEQQEAZIKgAAAyQVAAAJkgKACATHQkKM/Pz3JwcCCbm5tyenoq7+/v9kyXuQulWAhkzx4CAKpyD8rx8bEMDQ2ZNeMxMjIih4eH9oo2mBt7QQrxGO/QLZ6gAECqXINyeXkpfX19EgSBbG9vy/n5uezu7src3JyZ39nZsVd+g7mpFyW8s8eRvZVQ7u3PuSIoAJAqt6C8vb3J6OioTExM2Bnf2tqa+Zr+4+OjnWmR3tR7mgVkT4Jk91ITnnFnV+OsofPFKErmc8m8u05Bgv1oKg7KflBdp1O7IwD44XILytXVlVnn5OTEzvheXl7M+Y2NDTvTqnsJe9Ju5JVz5uavvB1FFIjkM5Xriis2HSY07s6jEhN3nTAJivO7zbEfLQD4rXILytHRkVnn9vbWztQbHByUMAzt0fckuw03LLpz8HYvGo7GN/z7laIXlPhnQ9dpFCwvUKomYADwi+UWFN2Z6Dr63qQRfSSm57e2tuxMe0xY4oi4j6KcEd/wNSLufFpQ3Nh46oJS+SxBAYAcg6J/GqzvSKampuyMT1/I64v5p6cnO9MuZxeStrOImJg455rtUGqvTRAUAEiVW1DUwsKCWWtmZkZubm5MZB4eHmR9fV36+/tlbGxMPj4+7NUtiqLh3cC99xg17z4cfjTq36F4OxKzprNOdFx9h5IWFOfxl3td3WM4APg/5RqU19dXWVpaMuvVjuHhYfOv/g9fn5+f9hOtqNy4q4+uat6R2Bgk5xv+1VZRgvEm71CUt479HQQFAFLpPT2WeVBi+v8Mz87OyuTkpCwuLpr3K19fX0ls5ufnzTEAoHt1JChpNCLLy8vm9+njMaICAN3rnwYltrq6an7n2dmZnQEAdJsfERR1cXFhfwIAdKMfExQAQHcjKACATBAUAEAmGgZFv+FeLpftEQAAzWkztB2xJCj6ZcNSqWSPAABoTpuh7YglQdEvImpp9AJ2KgCANNoIbYU2Q9sRS4Ki9ITWRi/S52IMBoPBYNQObYS2wo2J8oICAEC7CAoAIAMifwGaRaUTC4mCSwAAAABJRU5ErkJggg==" InformativeScreenshot="694531afa52ab200eb6a5e4edee0e0f3.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Cognine Dat Rates | Loads | Salesforce' /&gt;" SearchSteps="FuzzySelector, Image, CV" Version="V2" Visibility="Interactive">
+                                            <uix:TargetAnchorable.Anchors>
+                                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                <uix:Target DesignTimeRectangle="490, 149, 13, 13" ElementType="Icon" FullSelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/auraIf/auraIf/forceSearchDesktopHeaderManager/auraIf/auraIf/forceSearchAssistant:searchAssistant/lightningButton:searchBtn/auraIf/lightningPrimitiveIcon' tag='LIGHTNING-PRIMITIVE-ICON' /&gt;&lt;webctrl tag='path' /&gt;" FuzzySelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/auraIf/auraIf/forceSearchDesktopHeaderManager/auraIf/auraIf/forceSearchAssistant:searchAssistant/lightningButton:searchBtn/auraIf/lightningPrimitiveIcon' tag='LIGHTNING-PRIMITIVE-ICON' /&gt;&lt;webctrl tag='path' type='' class='' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFaSURBVDhPtZFNq4JAFIbvj7YgsEXaD2hlqxD6QCqirWAUuWqVlVDtCqpVtAhKULL3ck6Tt7GCS9z7wKDzzplnnOMX/oD/kZxOJ4zHY/T7ffi+jyiKxMp7JMl0OkU+n4eiKMnQNA2e54mK1ySS1WqFTCaDUqmE4XCIxWKB0WiEer3Oueu6ovIZloRhCF3XYRgGh2ls20Yul8PhcBCJDEvW6zV/+mw24zDN+Xzm9V6vJxIZlkwmEy7a7XYcvkJVVXQ6HTGTYQl9AUmoD6+g69L6YDAQiQxL6DfSnSuVCodpqKnU3OPxKBIZlhCWZfFp1WoV2+2Wxfv9Ho7jIJvNolgs4nK5iGqZRBIEAVqtFovSo1Ao8NM0TcRxLHb8kEjubDYb1Go1lMtlNJtN7tf1ek0OaDQaPH/kSfIO2thut1lEV38U/Vpyp9vtsmg+n4vkAwmxXC7F242PJDLANym9LagkUXuFAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                              </scg:List>
+                                            </uix:TargetAnchorable.Anchors>
+                                          </uix:TargetAnchorable>
+                                        </uix:NTypeInto.Target>
+                                      </uix:NTypeInto>
+                                      <uix:NCheckState DisplayName="Check App State 'Load'" sap:VirtualizedContainerService.HintSize="954,905" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="651d3268-b856-440a-abdd-6388d240188b" Version="V3">
+                                        <uix:NCheckState.IfExists>
+                                          <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,688" sap2010:WorkflowViewState.IdRef="Sequence_56">
+                                            <Sequence.Variables>
+                                              <Variable x:TypeArguments="x:String" Name="Temp" />
+                                            </Sequence.Variables>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Load'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_15" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="651d3268-b856-440a-abdd-6388d240188b" Version="V3">
+                                              <uix:NClick.Target>
+                                                <uix:TargetAnchorable BrowserURL="https://synchrogistics.lightning.force.com/lightning/o/rtms__Load__c/list?filterName=00B4Q00000AdIkrUAF" DesignTimeRectangle="273, 187, 399, 51" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/auraIf/auraIf/forceSearchDesktopHeaderManager/auraIf/auraIf/forceSearchAssistant:searchAssistant/forceSearchAssistantDialogContainer:assistantDialogContainer/forceSearchAssistantDialog:assistantDialog/search_dialogInstantResultsList:suggestionsList' tag='SEARCH_DIALOG-INSTANT-RESULTS-LIST' /&gt;&lt;webctrl tag='SEARCH_DIALOG-INSTANT-RESULT-ITEM' /&gt;" FuzzySelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/auraIf/auraIf/forceSearchDesktopHeaderManager/auraIf/auraIf/forceSearchAssistant:searchAssistant/forceSearchAssistantDialogContainer:assistantDialogContainer/forceSearchAssistantDialog:assistantDialog/search_dialogInstantResultsList:suggestionsList' tag='SEARCH_DIALOG-INSTANT-RESULTS-LIST' /&gt;&lt;webctrl tag='SEARCH_DIALOG-INSTANT-RESULT-ITEM' type='' class='' aaname='' /&gt;" Guid="bf6f8435-455a-4011-8956-48a94df9845c" InformativeScreenshot="c5e868d6e0adb287f5cdaca886a688d9.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Cognine Dat Rates | Loads | Salesforce' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                                                  <uix:TargetAnchorable.Anchors>
+                                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                      <uix:Target CvTextArea="320, 212, 27, 12" CvTextArgument="Load" CvType="Text" DesignTimeRectangle="321, 210, 26, 16" ElementType="Text" FullSelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/auraIf/auraIf/forceSearchDesktopHeaderManager/auraIf/auraIf/forceSearchAssistant:searchAssistant/forceSearchAssistantDialogContainer:assistantDialogContainer/forceSearchAssistantDialog:assistantDialog/search_dialogInstantResultsList:suggestionsList' tag='SEARCH_DIALOG-INSTANT-RESULTS-LIST' /&gt;&lt;webctrl aaname='Load' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/auraIf/auraIf/forceSearchDesktopHeaderManager/auraIf/auraIf/forceSearchAssistant:searchAssistant/forceSearchAssistantDialogContainer:assistantDialogContainer/forceSearchAssistantDialog:assistantDialog/search_dialogInstantResultsList:suggestionsList' tag='SEARCH_DIALOG-INSTANT-RESULTS-LIST' /&gt;&lt;webctrl aaname='Load' tag='SPAN' type='' class='' check:innerText='Load' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAYAAACaq43EAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC4SURBVEhL7ZLhDYQgDIVvuK4Du9hFDHuYOIZu0YO2QqOG5MgFf8hLMKHx9WtLP/SQBribXg3eKDhPYdfrX7USAsZv0QDfgxckANBj/0kJjziQnzeNx2yzN/HQAGaoMe2B/CmJyHR18kgRP4KTCRe9qNYJcsx2dkzj6mkYdQ3M0Cn3lf22MFHLG1dGnQD5XTmu/uRxIWYUyVSq4LIoshRivRsni2Ead0hoCk9FlTzV5eqrAe6mh8BEX+ls0ensauHOAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image, CV" />
+                                                    </scg:List>
+                                                  </uix:TargetAnchorable.Anchors>
+                                                </uix:TargetAnchorable>
+                                              </uix:NClick.Target>
+                                            </uix:NClick>
+                                            <uix:NGetText DisplayName="Get Text 'Distance (Miles)'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="651d3268-b856-440a-abdd-6388d240188b" TextString="[Temp]" Version="V3">
+                                              <uix:NGetText.Target>
+                                                <uix:TargetAnchorable BrowserURL="https://synchrogistics.lightning.force.com/lightning/r/rtms__Load__c/a0jUU000000MSk1YAG/view" CvTextArea="494, 435, 43, 13" CvType="AnyWordGroup" DesignTimeRectangle="496, 432, 108, 19" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/lafSinglePaneWindowManager:contentManager/lafPageHost/oneRecordHomeFlexipage2Wrapper/oneRecordHomeFlexipage2:recordHomeFlexipage2' tag='ONE-RECORD-HOME-FLEXIPAGE2' /&gt;&lt;webctrl idx='2' tag='LIGHTNING-FORMATTED-NUMBER' /&gt;" FuzzySelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/lafSinglePaneWindowManager:contentManager/lafPageHost/oneRecordHomeFlexipage2Wrapper/oneRecordHomeFlexipage2:recordHomeFlexipage2' tag='ONE-RECORD-HOME-FLEXIPAGE2' /&gt;&lt;webctrl type='' tag='LIGHTNING-FORMATTED-NUMBER' class='slds-form-element__static' /&gt;" Guid="64680a62-e33a-4874-a7f4-8a7d1a85401a" InformativeScreenshot="b37df890b33d9e852cd6794129601f98.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='366749 | Load | Salesforce' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                                  <uix:TargetAnchorable.Anchors>
+                                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                      <uix:Target CvTextArea="495, 416, 85, 14" CvTextArgument="Distance (Miles)" CvType="Text" DesignTimeRectangle="496, 410, 92, 20" ElementType="Text" FullSelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/lafSinglePaneWindowManager:contentManager/lafPageHost/oneRecordHomeFlexipage2Wrapper/oneRecordHomeFlexipage2:recordHomeFlexipage2' tag='ONE-RECORD-HOME-FLEXIPAGE2' /&gt;&lt;webctrl aaname='Distance (Miles)' class='slds-form-element__label' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/navexContentRegionNavContainer:contentRegionNavContainer/navexStandardManager/lafSinglePaneWindowManager:contentManager/lafPageHost/oneRecordHomeFlexipage2Wrapper/oneRecordHomeFlexipage2:recordHomeFlexipage2' tag='ONE-RECORD-HOME-FLEXIPAGE2' /&gt;&lt;webctrl aaname='Distance (Miles)' class='slds-form-element__label' tag='SPAN' type='' check:innerText='Distance (Miles)' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGAAAAAYCAYAAAAF6fiUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJjSURBVGhD7ZY9jsIwFIT3cNyAE3AARE9PT09NS09LQUNJC1eAElEgr76IWSZWDAat8C7yJ0XxX57fvHECX6FSlGpAYaoBhakGFKYaUJhqQGGqAYWpBhSmGlCYakBhfgw4nU5hPB6HXq/3c9FnXEyn07BYLK69v8lms2nyPh6PzZ2cu2Bcc/v9PoxGo3A4HJr2ZDJp6c7h1dq0DGBjEhAEHAwGTWI5ID4l+B24BrUxIc6f+eFwGGaz2XXkxqsGsEfXXo+4awBgQq6zpQ0gdxVVerji/OnP5/NfNQDQTg2e4aEBnpBvgAh9qjSufr/fb57rGtOzFIATwxx3CeaucS7t57F8vUNcFVt6lstlq6A6qYzrsLhGbwNrtK9iE4MvA2OuixwVM4fz+fyaAanX7V4CPocQJU5cYjEPrJFQEcf1QjvKD1yPj3PnWY/pGrv0gsdL7e/P5rDdbvMM0KuqhFhL0eKT6KJA6+KTGwtQP2Usc4qhy/cRqYIpr64x8MKprR/xeF+e41Lb8Tg5rFarxwaQpIrlAoG1nGQJcVHEQ4DWe3IquFA/JSBen8Lzcz1q89nRYfJcfV+1MUDPp+B5/wR5nBzW6/V9A9hAp1Z9NwD81Loo+vy1UzwKqFhxQdVnjjU+B8TN+TfmcWM9jPupfWQAbea1JoXv6TFz2O12bQMQ769bHIw+m1AI/Qi5KI3rVEg0F6IkzJMG76dieywfd7wAsQHEZY5x8LUpA7i8JjoEnosOFag+uVwul5sBnwCF8KK/E4zBDO7P8FEGACfQT+W74PT7W53Lxxnw36gGFKYaUJQQvgHJuTMtcUsYgwAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image, CV" />
+                                                    </scg:List>
+                                                  </uix:TargetAnchorable.Anchors>
+                                                </uix:TargetAnchorable>
+                                              </uix:NGetText.Target>
+                                            </uix:NGetText>
+                                            <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="388,179" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" Shortcuts="[d(hk)][d(alt)][k(left)][u(alt)][u(hk)]" Version="V3" />
+                                          </Sequence>
+                                        </uix:NCheckState.IfExists>
+                                        <uix:NCheckState.IfNotExists>
+                                          <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,258" sap2010:WorkflowViewState.IdRef="Sequence_57">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_47" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Load not found : &quot; + CurrentRow(0).ToString]" />
+                                          </Sequence>
+                                        </uix:NCheckState.IfNotExists>
+                                        <uix:NCheckState.Target>
+                                          <uix:TargetAnchorable BrowserURL="https://synchrogistics.lightning.force.com/lightning/o/rtms__Load__c/list?filterName=00B4Q00000AdIkrUAF" DesignTimeRectangle="273, 187, 399, 51" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/auraIf/auraIf/forceSearchDesktopHeaderManager/auraIf/auraIf/forceSearchAssistant:searchAssistant/forceSearchAssistantDialogContainer:assistantDialogContainer/forceSearchAssistantDialog:assistantDialog/search_dialogInstantResultsList:suggestionsList' tag='SEARCH_DIALOG-INSTANT-RESULTS-LIST' /&gt;&lt;webctrl tag='SEARCH_DIALOG-INSTANT-RESULT-ITEM' /&gt;" FuzzySelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/auraIf/auraIf/forceSearchDesktopHeaderManager/auraIf/auraIf/forceSearchAssistant:searchAssistant/forceSearchAssistantDialogContainer:assistantDialogContainer/forceSearchAssistantDialog:assistantDialog/search_dialogInstantResultsList:suggestionsList' tag='SEARCH_DIALOG-INSTANT-RESULTS-LIST' /&gt;&lt;webctrl tag='SEARCH_DIALOG-INSTANT-RESULT-ITEM' type='' class='' aaname='' /&gt;" Guid="1c901517-a9e5-4607-b9ba-adc7f60ab15c" InformativeScreenshot="09cf44834505a0ea92a9a17ba9371c29.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Cognine Dat Rates | Loads | Salesforce' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                                            <uix:TargetAnchorable.Anchors>
+                                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                <uix:Target CvTextArea="320, 212, 27, 12" CvTextArgument="Load" CvType="Text" DesignTimeRectangle="321, 210, 26, 16" ElementType="Text" FullSelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/auraIf/auraIf/forceSearchDesktopHeaderManager/auraIf/auraIf/forceSearchAssistant:searchAssistant/forceSearchAssistantDialogContainer:assistantDialogContainer/forceSearchAssistantDialog:assistantDialog/search_dialogInstantResultsList:suggestionsList' tag='SEARCH_DIALOG-INSTANT-RESULTS-LIST' /&gt;&lt;webctrl aaname='Load' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl sfl-path='oneOne/lafAppLayoutHost:host/navexDesktopLayoutContainer/auraIf/auraIf/forceSearchDesktopHeaderManager/auraIf/auraIf/forceSearchAssistant:searchAssistant/forceSearchAssistantDialogContainer:assistantDialogContainer/forceSearchAssistantDialog:assistantDialog/search_dialogInstantResultsList:suggestionsList' tag='SEARCH_DIALOG-INSTANT-RESULTS-LIST' /&gt;&lt;webctrl aaname='Load' tag='SPAN' type='' class='' check:innerText='Load' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                              </scg:List>
+                                            </uix:TargetAnchorable.Anchors>
+                                          </uix:TargetAnchorable>
+                                        </uix:NCheckState.Target>
+                                      </uix:NCheckState>
+                                    </Sequence>
+                                  </ActivityAction>
+                                </ui:ForEachRow.Body>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:ForEachRow>
+                              <Assign sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="Assign_29">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="sd:DataTable">[dt_EmptyMiles]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="sd:DataTable">[Nothing]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_31">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[IsFirstLoad]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="376,113" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:Break sap:VirtualizedContainerService.HintSize="334,25" sap2010:WorkflowViewState.IdRef="Break_1" />
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </ui:InterruptibleWhile.Body>
+                  </ui:InterruptibleWhile>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1182,143" sap2010:WorkflowViewState.IdRef="LogMessage_40" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Adding extra columns&quot;]" />
+                  <InvokeMethod DisplayName="Invoke Method &quot;Adding Columns'" sap:VirtualizedContainerService.HintSize="1182,140" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="AddRange">
+                    <InvokeMethod.TargetObject>
+                      <InArgument x:TypeArguments="sd:DataColumnCollection">[dt_Loads.Columns]</InArgument>
+                    </InvokeMethod.TargetObject>
+                    <InArgument x:TypeArguments="sd:DataColumn[]">[{ New System.Data.DataColumn ("Status"), New System.Data.DataColumn ("Remarks") , New System.Data.DataColumn ("DAT Miles"), New System.Data.DataColumn ("DAT Avg"), New System.Data.DataColumn ("DAT Low") , New System.Data.DataColumn ("DAT High"), New System.Data.DataColumn ("DAT Rate"), New System.Data.DataColumn ("TMS Rate") , New System.Data.DataColumn ("DAT Low Rate"), New System.Data.DataColumn ("DAT High Rate"), New System.Data.DataColumn ("Final Rate"), New System.Data.DataColumn ("Equp Type") }]</InArgument>
+                  </InvokeMethod>
+                  <Assign sap:VirtualizedContainerService.HintSize="1182,122" sap2010:WorkflowViewState.IdRef="Assign_25">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[InputFile]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Config("PathInputFolder").ToString + "\DAT_"+ DateTime.Now.ToString("dd_MM_yyyy HH_mm_ss")+".xlsx"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1182,183" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Writing loads to excel file : &quot; + InputFile]" />
+                  <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[dt_Loads]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="1182,156" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Loads" WorkbookPath="[InputFile]" />
+                  <Assign sap:VirtualizedContainerService.HintSize="1182,122" sap2010:WorkflowViewState.IdRef="Assign_27">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_InputFile]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[InputFile]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SendSlackMessage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="1182,138" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="SendSlackMessage.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_Message">["Input file available at : " + InputFile]</InArgument>
+                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                </Sequence>
+              </ActivityAction>
+            </uix:NApplicationCard.Body>
+            <uix:NApplicationCard.TargetApp>
+              <uix:TargetApp Area="0, 0, 0, 0" />
+            </uix:NApplicationCard.TargetApp>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </uix:NApplicationCard>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="476,169" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_26">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[out_InputFile]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[InputFiles.First]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1354,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;LoadInputFiles execution ended&quot;]" />
+  </Sequence>
+</Activity>
